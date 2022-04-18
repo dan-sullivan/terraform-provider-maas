@@ -99,6 +99,11 @@ func resourceMaasMachine() *schema.Resource {
 				Optional: true,
 				Computed: true,
 			},
+			"description": {
+				Type:     schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},
 		},
 	}
 }
@@ -139,6 +144,7 @@ func resourceMachineRead(ctx context.Context, d *schema.ResourceData, m interfac
 		"architecture":   machine.Architecture,
 		"min_hwe_kernel": machine.MinHWEKernel,
 		"hostname":       machine.Hostname,
+		"description":    machine.Description,
 		"domain":         machine.Domain.Name,
 		"zone":           machine.Zone.Name,
 		"pool":           machine.Pool.Name,
@@ -193,6 +199,7 @@ func getMachineParams(d *schema.ResourceData) *entity.MachineParams {
 		Architecture:  d.Get("architecture").(string),
 		MinHWEKernel:  d.Get("min_hwe_kernel").(string),
 		Hostname:      d.Get("hostname").(string),
+		Description:   d.Get("description").(string),
 		Domain:        d.Get("domain").(string),
 		Zone:          d.Get("zone").(string),
 		Pool:          d.Get("pool").(string),
