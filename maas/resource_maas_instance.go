@@ -153,6 +153,11 @@ func resourceMaasInstance() *schema.Resource {
 					Type: schema.TypeString,
 				},
 			},
+			"description": {
+				Type:     schema.TypeString,
+				Optional: true,
+				Computed: true,
+			},			
 		},
 	}
 }
@@ -213,6 +218,7 @@ func resourceInstanceRead(ctx context.Context, d *schema.ResourceData, m interfa
 		"cpu_count":    machine.CPUCount,
 		"memory":       machine.Memory,
 		"ip_addresses": ipAddresses,
+		"description":    machine.Description,
 	}
 	if err := setTerraformState(d, tfState); err != nil {
 		return diag.FromErr(err)
