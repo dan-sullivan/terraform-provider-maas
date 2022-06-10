@@ -1,9 +1,12 @@
 terraform {
   required_providers {
     maas = {
-      source = "registry.terraform.io/ionutbalutoiu/maas"
+      source = "dan-sullivan/maas"
+      version = "1.0.0-ds"
     }
   }
 }
 
-provider "maas" {}
+provider "maas" {
+  # Configuration options
+}
